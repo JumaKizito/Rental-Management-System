@@ -1,0 +1,110 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/css/auth.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sign Up | Rental Management System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+/* Use same styles as login page */
+:root {
+    --primary:#1e3a8a;
+    --secondary:#2563eb;
+body {
+    background: linear-gradient(
+        135deg,
+        #16213e 20%,   /* deeper navy tone */
+        #0f3460 40%,   /* softer dark blue */
+        #53354a 60%,   /* muted plum/purple hue */
+        #e94560 80%,   /* warm reddish accent */
+        #f9ed69 100%   /* bright cream‑yellow pop */
+        #1a1a2e 0%,    /* rich dark blue/black */
+    );
+    min-height: 100vh;
+    margin: 0;
+}
+    --card-bg:#ffffff;
+    --text-dark:#1f2937;
+    --text-light:#6b7280;
+    --error:#dc2626;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;}
+body{background:var(--background);display:flex;justify-content:center;align-items:center;height:100vh;}
+.auth-container{background:var(--card-bg);padding:40px 35px;border-radius:16px;box-shadow:0 12px 25px rgba(0,0,0,0.1);width:350px;}
+.auth-container h2{text-align:center;margin-bottom:25px;color:var(--text-dark);}
+.auth-container form{display:flex;flex-direction:column;}
+.auth-container input{margin-bottom:15px;padding:12px 15px;border-radius:10px;border:1px solid #ccc;font-size:14px;}
+.auth-container button{padding:12px 15px;border:none;border-radius:10px;background:var(--primary);color:#fff;font-size:16px;cursor:pointer;transition:background 0.3s;}
+.auth-container button:hover{background:var(--secondary);}
+.auth-container .link{text-align:center;margin-top:15px;font-size:14px;}
+.auth-container .link a{color:var(--primary);text-decoration:none;font-weight:500;}
+.auth-container .link a:hover{color:var(--secondary);}
+.auth-container .error{color:var(--error);margin-bottom:10px;font-size:13px;}
+.show-password{position:relative;}
+.show-password i{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--text-light);}
+</style>
+</head>
+<body>
+
+<div class="auth-container">
+    <h2>Sign Up</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="error">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+
+        <div class="show-password">
+            <input type="password" name="password1" placeholder="Password" id="signupPassword" required>
+            <i class="bi bi-eye-slash" id="toggleSignupPassword"></i>
+        </div>
+
+        <div class="show-password">
+            <input type="password" name="password2" placeholder="Confirm Password" id="signupConfirm" required>
+            <i class="bi bi-eye-slash" id="toggleSignupConfirm"></i>
+        </div>
+
+        <button type="submit">Sign Up</button>
+    </form>
+    <div class="link">
+        Already have an account? <a href="{% url 'login' %}">Login</a>
+    </div>
+</div>
+
+<script>
+const toggleSign = document.getElementById('toggleSignupPassword');
+const toggleConfirm = document.getElementById('toggleSignupConfirm');
+const passInput = document.getElementById('signupPassword');
+const confirmInput = document.getElementById('signupConfirm');
+
+toggleSign.addEventListener('click', () => {
+    if(passInput.type==="password"){
+        passInput.type="text"; toggleSign.classList.replace('bi-eye-slash','bi-eye');
+    } else{
+        passInput.type="password"; toggleSign.classList.replace('bi-eye','bi-eye-slash');
+    }
+});
+
+toggleConfirm.addEventListener('click', () => {
+    if(confirmInput.type==="password"){
+        confirmInput.type="text"; toggleConfirm.classList.replace('bi-eye-slash','bi-eye');
+    } else{
+        confirmInput.type="password"; toggleConfirm.classList.replace('bi-eye','bi-eye-slash');
+    }
+});
+</script>
+
+</body>
+</html>

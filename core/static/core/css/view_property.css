@@ -1,0 +1,51 @@
+.property-view {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+.property-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.property-header h2 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.badge {
+    background: #6366f1;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.property-body {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+}
+
+.property-image img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.property-details p {
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.property-description {
+    margin-top: 30px;
+}
+
+.property-description h4 {
+    margin-bottom: 10px;
+}
