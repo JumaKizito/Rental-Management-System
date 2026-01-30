@@ -1,0 +1,136 @@
+/* MAIN CONTAINER */
+.property-list-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* HEADINGS */
+.property-list-container h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.subtitle {
+    color: #6b7280;
+    margin-bottom: 25px;
+}
+
+/* SECTION TITLES */
+.property-list-container h4 {
+    margin-top: 30px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #374151;
+    border-left: 4px solid #6366f1;
+    padding-left: 10px;
+}
+
+/* GRID LAYOUT */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* FORM GROUP (NO BOX AROUND INPUTS) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* LABEL */
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* INPUTS / SELECT / TEXTAREA */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* DROPDOWN ARROW FIX */
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%236b7280' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+}
+
+/* FOCUS STATE */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* FULL WIDTH FIELD */
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* TEXTAREA */
+.form-group textarea {
+    min-height: 160px;
+    resize: none;
+}
+
+/* IMAGE PREVIEW */
+.image-preview {
+    display: none;
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* BUTTON */
+.btn-primary {
+    margin-top: 30px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #ffffff;
+    padding: 14px 42px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 12px 25px rgba(99, 102, 241, 0.35);
+    transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}

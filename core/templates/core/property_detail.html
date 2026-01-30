@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>{{ property.name }}</h2>
+<p>Type: {{ property.property_type }}</p>
+<p>Rent Type: {{ property.rent_type }}</p>
+<p>Price: {{ property.rent_price }}</p>
+<p>Deposit: {{ property.deposit }}</p>
+<p>Area: {{ property.area }} sq ft</p>
+<p>Location: {{ property.location }}</p>
+<p>Description: {{ property.description }}</p>
+{% if property.image %}
+<img src="{{ property.image.url }}" width="300">
+{% endif %}
+<a href="{% url 'property_update' property.id %}">Edit</a>
+{% endblock %}

@@ -4,21 +4,22 @@
 {% block title %}Create Property{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'core/css/create_property.css' %}">
+<link rel="stylesheet" href="{% static 'core/css/property_list.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="page-container">
+<div class="property-list-container">
 
     <h2>Create Property</h2>
     <p class="subtitle">Fill all required details before submitting.</p>
 
-    <form method="POST" enctype="multipart/form-data" class="property-form">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
         <h4>Basic Details</h4>
 
         <div class="form-grid">
+
             <div class="form-group">
                 <label>Property Name *</label>
                 {{ form.name }}
@@ -27,7 +28,7 @@
             <div class="form-group">
                 <label>Property Image</label>
                 {{ form.image }}
-                <img id="preview" class="image-preview">
+                <img id="preview" class="image-preview" alt="Image preview">
             </div>
 
             <div class="form-group">
@@ -46,7 +47,7 @@
             </div>
 
             <div class="form-group">
-                <label>Deposit (Kshs) * </label>
+                <label>Deposit (Kshs)</label>
                 {{ form.deposit }}
             </div>
 
@@ -55,21 +56,16 @@
                 {{ form.area }}
             </div>
 
-       <div class="form-group">
-                <label>Agency Commission (%) *</label>
-                {{ form.name }}
-            </div>
-
-              <div class="form-group">
+            <div class="form-group">
                 <label>Location *</label>
-                {{ form.name }}
+                {{ form.location }}
             </div>
 
         </div>
 
         <h4>Description</h4>
         <div class="form-group full-width">
-            {{ form.location }}
+            {{ form.description }}
         </div>
 
         <button type="submit" class="btn-primary">
@@ -81,18 +77,16 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const fileInput = document.querySelector('input[type="file"]');
-    const fileNameDisplay = document.getElementById('file-name');
+    const preview = document.getElementById('preview');
 
-    if (fileInput && fileNameDisplay) {
-        fileInput.addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (file) {
-                fileNameDisplay.src = URL.createObjectURL(file);
-                fileNameDisplay.style.display = 'block';
+    if (fileInput) {
+        fileInput.addEventListener('change', function () {
+            if (fileInput.files.length > 0) {
+                preview.src = URL.createObjectURL(fileInput.files[0]);
+                preview.style.display = 'block';
             }
         });
     }
 });
 </script>
-
 {% endblock %}
